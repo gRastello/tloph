@@ -71,7 +71,7 @@
 		       (:prop "2.061 States of affairs are independent of one another.")
 		       (:prop "2.062 From the existence or non-existence of one state of affairs it isimpossible to infer the existence or non-existence of another.")
 		       (:prop "2.063 The sum-total of reality is the world.")))))
-       (:peop "2.1 We picture facts to ourselves." :child
+       (:prop "2.1 We picture facts to ourselves." :child
 	      ((:prop nil)
 	       (:prop "2.11 A picture presents a situation in logical space, the existence and non-existence of states of affairs.")
 	       (:prop "2.12 A picture is a model of reality.")
