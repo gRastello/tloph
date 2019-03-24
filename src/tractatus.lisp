@@ -15,7 +15,8 @@
 	       (:prop "1.21 Each item can be the case or not the case while everything elseremains the same.")))))
      (:prop "2.0 What is the case--a fact--is the existence of states of affairs." :child
       ((:prop nil :child
-	      ((:prop "2.01 A state of affairs (a state of things) is a combination of objects(things)." :child
+	      ((:prop nil)
+	       (:prop "2.01 A state of affairs (a state of things) is a combination of objects(things)." :child
 		      ((:prop nil)
 		       (:prop "2.011 It is essential to things that they should be possible constituentsof states of affairs.")
 		       (:prop "2.012 In logic nothing is accidental: if a thing can occur in a state ofaffairs, the possibility of the state of affairs must be written into the thing itself." :child
