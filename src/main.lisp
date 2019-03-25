@@ -10,9 +10,16 @@
   "the main"
   ;; read command line arguments
   (multiple-value-bind (options argv) (opts:get-opts)
-    (let ((node (apply #'search-tractatus (mapcar #'parse-integer argv))))
+    (let ((node (apply #'search-tractatus (mapcar #'atoi argv))))
       (if node (print-node node)
 	  (format t "No such proposition~%")))))
+
+(defun atoi (string)
+  "atoi (string to int) but quits with failure if the coercion fails"
+  (handler-case (parse-integer string)
+    (error ()
+      (format t "tloph: \"~a\" is not a valid number~%" string)
+      (sb-ext:exit :code 1))))
 
 (defun search-tractatus (&rest args)
   (unless (null (car args)) (apply #'get-node *tractatus* args)))
