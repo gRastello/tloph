@@ -2,7 +2,17 @@
   (:use :cl))
 (in-package :tloph)
 
+;;; global variables
 (defparameter *line-length* 72)
+
+;;; functions
+(defun main ()
+  "the main"
+  ;; read command line arguments
+  (multiple-value-bind (options argv) (opts:get-opts)
+    (let ((node (apply #'search-tractatus (mapcar #'parse-integer argv))))
+      (if node (print-node node)
+	  (format t "No such proposition~%")))))
 
 (defun search-tractatus (&rest args)
   (unless (null (car args)) (apply #'get-node *tractatus* args)))
@@ -41,11 +51,3 @@
 
     ;; final newline
     (format t "~%")))
-
-(defun main ()
-  "the main"
-  ;; read command line arguments
-  (multiple-value-bind (options argv) (opts:get-opts)
-    (let ((node (apply #'search-tractatus (mapcar #'parse-integer argv))))
-      (if node (print-node node)
-	  (format t "No such proposition~%")))))
