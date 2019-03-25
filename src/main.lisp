@@ -19,8 +19,6 @@
     (if (getf node :prop) (print-proposition (getf node :prop)))
     (mapcar #'print-node (getf node :child))))
 
-;; (format t "~s~%" (getf node :prop))
-
 (defun print-proposition (proposition)
   "print a proposition prettily"
   (let ((number (car (cl-utilities:split-sequence #\Space proposition)))
