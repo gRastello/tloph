@@ -2,7 +2,8 @@
   :version "0.1.0"
   :author "Gabriele Rastello <gabriele.rastello@edu.unito.it>"
   :license "MIT"
-  :depends-on (:cl-utilities)
+  :depends-on ("cl-utilities"
+	       "unix-opts")
   :components ((:module "src"
                 :components
                 ((:file "main")
