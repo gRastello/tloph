@@ -4,7 +4,7 @@ Access Wittgenstein's _Tractatus Logico-Philosophicus_ from the command line. A 
 ## Installation and dependencies
 To build tloph you'll only need SBCL with quicklisp and asdf (the makefile is specific to SBCL and will not work with other lisps) all of the other dependencies will be fetched by quicklisp during the building process, so you'll need an internet connection as well.
 
-``` shell
+```
 $ git clone https://github.com/gRastello/tloph.git
 $ cd tloph
 $ make
@@ -16,12 +16,12 @@ If you just want to test it feel free to skip the last command and play around w
 ## Usage
 Run `tloph n1 n2 ... nm` where `n1, n2, ..., nm` are integers. Tloph will fetch the proposition `n1.n2n3...nm` as well as all the comments to it and print them to stdout:
 
-``` shell
+```
 $ tloph 7
 7.0     What we cannot speak about we must pass over in silence.
 ```
 
-``` shell
+```
 $ tloph 2 2 2
 2.22    What a picture represents it represents independently of its truth or
         falsity, by means of its pictorial form. 
