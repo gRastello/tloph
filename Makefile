@@ -1,6 +1,6 @@
 LISP := sbcl
 
-.PHONY: build, test
+.PHONY: build test
 
 build:
 	$(LISP) --eval '(require "asdf")' \
