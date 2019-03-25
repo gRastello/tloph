@@ -9,10 +9,10 @@
                 ((:file "main")
 		 (:file "tractatus"))))
   :description "Quickly read Wittgenstein's Tractatus"
-  :long-description
-  #.(read-file-string
-     (subpathname *load-pathname* "README.markdown"))
-  :in-order-to ((test-op (test-op "tloph/tests"))))
+  :in-order-to ((test-op (test-op "tloph/tests")))
+  :build-operation "program-op"
+  :build-pathname "build/tloph"
+  :entry-point "tloph::main")
 
 (defsystem "tloph/tests"
   :author "Gabriele Rastello <gabriele.rastello@edu.unito.it>"
