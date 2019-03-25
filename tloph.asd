@@ -14,8 +14,8 @@
   :in-order-to ((test-op (test-op "tloph/tests"))))
 
 (defsystem "tloph/tests"
-  :author ""
-  :license ""
+  :author "Gabriele Rastello <gabriele.rastello@edu.unito.it>"
+  :license "MIT"
   :depends-on ("tloph"
                "rove")
   :components ((:module "tests"
