@@ -1,6 +1,10 @@
 LISP := sbcl
+DEST := /usr/local/bin
+BINARY := build/tloph
 
-.PHONY: build test
+.PHONY: all build test uninstall
+
+all: test build
 
 build:
 	$(LISP) --eval '(require "asdf")' \
@@ -17,3 +21,9 @@ test:
 	--eval '(ql:quickload :tloph)' \
 	--eval '(asdf:test-system :tloph)' \
 	--eval '(quit)'
+
+install: $(BINARY)
+	cp $(BINARY) $(DEST)
+
+uninstall:
+	rm $(DEST)/tloph
