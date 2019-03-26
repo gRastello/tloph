@@ -20,7 +20,7 @@
   (handler-case (parse-integer string)
     (error ()
       (format t "\"~a\" is not a valid number~%" string)
-      (sb-ext:exit :code 1))))
+      (opts:exit 1))))
 
 (defun search-tractatus (&rest args)
   (unless (null (car args)) (apply #'get-node *tractatus* args)))
