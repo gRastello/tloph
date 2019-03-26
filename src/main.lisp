@@ -11,7 +11,8 @@
   ;; read command line arguments
   (multiple-value-bind (options argv) (opts:get-opts)
     (let ((node (apply #'search-tractatus (mapcar #'atoi argv))))
-      (if node (print-node node)
+      (if node
+	  (print-node node)
 	  (format t "No such proposition~%")))))
 
 (defun atoi (string)
@@ -33,7 +34,8 @@
 
 (defun print-node (node)
   (unless (null node)
-    (if (getf node :prop) (print-proposition (getf node :prop)))
+    (when (getf node :prop)
+      (print-proposition (getf node :prop)))
     (mapcar #'print-node (getf node :child))))
 
 (defun print-proposition (proposition)
@@ -50,9 +52,9 @@
 
     ;; print the words
     (loop for w in words do
-	 (if (> (+ count (length w)) *line-length*)
-	     (progn (format t "~%        ")
-		    (setf count 8)))
+	 (when (> (+ count (length w)) *line-length*)
+	   (format t "~%        ")
+	   (setf count 8))
 	 (format t "~A " w)
 	 (setf count (+ count (length w))))
 
