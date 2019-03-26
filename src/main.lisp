@@ -19,7 +19,7 @@
   "atoi (string to int) but quits with failure if the coercion fails"
   (handler-case (parse-integer string)
     (error ()
-      (format t "tloph: \"~a\" is not a valid number~%" string)
+      (format t "\"~a\" is not a valid number~%" string)
       (sb-ext:exit :code 1))))
 
 (defun search-tractatus (&rest args)
