@@ -35,7 +35,7 @@ $ tloph 2 2 2
 ```
 
 ## TODO
-- [ ] `-h`
-- [ ] `-v`
+- [X] `-h`
+- [X] `-v`
 - [ ] an option to show only the wanted proposition without its whole sub-tree
 - [ ] an option to disable line wrapping

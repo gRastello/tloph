@@ -2,18 +2,38 @@
   (:use :cl))
 (in-package :tloph)
 
-;;; global variables
+;;; global variables and constants
 (defparameter *line-length* 72)
+(defparameter +version+ "0.1.0")
+
+;;; command lines flags
+(opts:define-opts
+    (:name :help
+           :description "print this help text"
+           :short #\h
+           :long "help")
+    (:name :version
+	   :description "print version number"
+	   :short #\v
+	   :long "version"))
 
 ;;; functions
 (defun main ()
   "the main"
   ;; read command line arguments
-  (multiple-value-bind (options argv) (opts:get-opts)
-    (let ((node (apply #'search-tractatus (mapcar #'atoi argv))))
-      (if node
-	  (print-node node)
-	  (format t "No such proposition~%")))))
+  (multiple-value-bind (options argv)
+      (handler-case (opts:get-opts)
+	(error (err)
+	  (format t "~a~%" err)
+	  (opts:exit 1)))
+
+    ;; branch out
+    (cond ((getf options :help) (opts:describe))
+	  ((getf options :version) (format t "tloph v~a~%" +version+))
+	  (t (let ((node (apply #'search-tractatus (mapcar #'atoi argv))))
+	       (if node
+		   (print-node node)
+		   (format t "No such proposition~%")))))))
 
 (defun atoi (string)
   "atoi (string to int) but quits with failure if the coercion fails"
