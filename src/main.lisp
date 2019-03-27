@@ -3,7 +3,7 @@
 (in-package :tloph)
 
 ;;; global variables and constants
-(defparameter *line-length* 72)
+(defparameter +line-length+ 72)
 (defparameter +version+ "0.1.0")
 
 ;;; command lines flags
@@ -72,7 +72,7 @@
 
     ;; print the words
     (loop for w in words do
-	 (when (> (+ count (length w)) *line-length*)
+	 (when (> (+ count (length w)) +line-length+)
 	   (format t "~%        ")
 	   (setf count 8))
 	 (format t "~A " w)
