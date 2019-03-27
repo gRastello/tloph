@@ -58,7 +58,7 @@
       (print-proposition (getf node :prop)))
     (mapcar #'print-node (getf node :child))))
 
-(defun print-proposition (proposition)
+(defun pretty-print-proposition (proposition)
   "print a proposition prettily"
   (let ((number (car (cl-utilities:split-sequence #\Space proposition)))
 	(words (cdr (cl-utilities:split-sequence #\Space proposition)))
