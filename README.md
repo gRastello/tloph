@@ -34,6 +34,18 @@ $ tloph 2 2 2
 2.225   There are no pictures that are true a priori. 
 ```
 
+If you don't like tloph to format propositions for you it is possible to use the `--no-wrap` option that disables line wrapping and text padding. Useful for scripting, I guess.
+
+```
+$ tloph --no-wrap 2 2 2
+2.22 What a picture represents it represents independently of its truth or falsity, by means of its pictorial form.
+2.221 What a picture represents is its sense.
+2.222 The agreement or disagreement or its sense with reality constitutes its truth or falsity.
+2.223 In order to tell whether a picture is true or false we must compare it with reality.
+2.224 It is impossible to tell from the picture alone whether it is true or false.
+2.225 There are no pictures that are true a priori.
+```
+
 ## TODO
 - [X] `-h`
 - [X] `-v`
