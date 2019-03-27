@@ -3,6 +3,8 @@
 (in-package :tloph)
 
 ;;; global variables and constants
+(defparameter *no-wrap* nil)
+
 (defparameter +line-length+ 72)
 (defparameter +version+ "0.1.0")
 
@@ -15,7 +17,10 @@
     (:name :version
 	   :description "print version number"
 	   :short #\v
-	   :long "version"))
+	   :long "version")
+    (:name :no-wrap
+           :description "print propositions without wrapping long lines"
+	   :long "no-wrap"))
 
 ;;; functions
 (defun main ()
@@ -26,6 +31,10 @@
 	(error (err)
 	  (format t "~a~%" err)
 	  (opts:exit 1)))
+
+    ;; set options
+    (when (getf options :no-wrap)
+      (setf *no-wrap* t))
 
     ;; branch out
     (cond ((getf options :help) (opts:describe))
@@ -55,7 +64,9 @@
 (defun print-node (node)
   (unless (null node)
     (when (getf node :prop)
-      (print-proposition (getf node :prop)))
+      (if *no-wrap*
+	  (format t "~A~%" (getf node :prop))
+	  (pretty-print-proposition (getf node :prop))))
     (mapcar #'print-node (getf node :child))))
 
 (defun pretty-print-proposition (proposition)
@@ -63,7 +74,7 @@
   (let ((number (car (cl-utilities:split-sequence #\Space proposition)))
 	(words (cdr (cl-utilities:split-sequence #\Space proposition)))
 	(count 0))
-    
+
     ;; print prosition number
     (format t "~A" number)
     (loop repeat (- 8 (length number))

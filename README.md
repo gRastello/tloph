@@ -38,4 +38,4 @@ $ tloph 2 2 2
 - [X] `-h`
 - [X] `-v`
 - [ ] an option to show only the wanted proposition without its whole sub-tree
-- [ ] an option to disable line wrapping
+- [X] an option to disable line wrapping
