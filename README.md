@@ -46,6 +46,14 @@ $ tloph --no-wrap 2 2 2
 2.225 There are no pictures that are true a priori.
 ```
 
+If you just want to search for a single proposition you'll need to use the `-1` option (or its long form `--one-proposition`):
+
+```
+$ tloph -1 2 2 2
+2.22    What a picture represents it represents independently of its truth or
+        falsity, by means of its pictorial form.
+```
+
 ## TODO
 - [X] `-h`
 - [X] `-v`
