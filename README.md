@@ -49,5 +49,5 @@ $ tloph --no-wrap 2 2 2
 ## TODO
 - [X] `-h`
 - [X] `-v`
-- [ ] an option to show only the wanted proposition without its whole sub-tree
+- [X] an option to show only the wanted proposition without its whole sub-tree
 - [X] an option to disable line wrapping

@@ -4,6 +4,7 @@
 
 ;;; global variables and constants
 (defparameter *no-wrap* nil)
+(defparameter *one-proposition* nil)
 
 (defparameter +line-length+ 72)
 (defparameter +version+ "0.1.0")
@@ -20,7 +21,11 @@
 	   :long "version")
     (:name :no-wrap
            :description "print propositions without wrapping long lines"
-	   :long "no-wrap"))
+	   :long "no-wrap")
+    (:name :one-proposition
+	   :description "don't print sub-propositions"
+	   :short #\1
+	   :long "one-proposition"))
 
 ;;; functions
 (defun main ()
@@ -35,6 +40,8 @@
     ;; set options
     (when (getf options :no-wrap)
       (setf *no-wrap* t))
+    (when (getf options :one-proposition)
+      (setf *one-proposition* t))
 
     ;; branch out
     (cond ((getf options :help) (opts:describe))
@@ -67,7 +74,8 @@
       (if *no-wrap*
 	  (format t "~A~%" (getf node :prop))
 	  (pretty-print-proposition (getf node :prop))))
-    (mapcar #'print-node (getf node :child))))
+    (unless *one-proposition*
+      (mapcar #'print-node (getf node :child)))))
 
 (defun pretty-print-proposition (proposition)
   "print a proposition prettily"
